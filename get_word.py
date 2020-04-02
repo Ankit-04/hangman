@@ -4,7 +4,7 @@ def get_word():
     word = " "
 
     while word == " ":
-        difficulty = str(input("enter the difficulty of the word you would like to guess (easy, medium, hard)")).lower()
+        difficulty = str(input("enter the difficulty of the word you would like to guess (easy, medium, hard) \n")).lower()
 
         if difficulty == "easy":
             word = RandomWords().get_random_word(minLength = 2, maxLength = 5)
