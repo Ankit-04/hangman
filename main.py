@@ -12,7 +12,7 @@ print ("+++++++++++++++===================Welcome to Hangman+++++++++++++++=====
 print( "\n \n")
 
 #getting the word from the other file
-word = get_word.get_word()
+word = get_word.get_word().lower()
 
 #filling the underscores list with the amount of underscores in the word
 for x in word:
@@ -22,9 +22,13 @@ while lives > 0:
 
     print (" ".join(underscores))
     print ("you have",lives,"lives left")
-    letter = input("enter the letter that you want to guess")
+    letter = input("enter the letter that you want to guess: ")
     
-    if letter in letters_guessed or len(letter)>1:
+    if(letter == word):
+        print ("you should try a higher difficutly")
+        break
+
+    elif letter in letters_guessed or len(letter)>1:
     
         print ("invaild move")
     
@@ -47,6 +51,7 @@ while lives > 0:
     if "_" not in underscores:
     
         print("Good Job!")
+        break
 
 
 if "_" in underscores:
