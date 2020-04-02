@@ -1,19 +1,16 @@
 def get_word():
-    from bs4 import BeautifulSoup
-    import requests
+    from random_word import RandomWords
 
-    url = 'https://randomword.com/'
-    loop = True
-    while loop == True:
-        r = requests.get(url)
-        soup = r.text
-        soup = BeautifulSoup(soup, 'html5lib')
-        word = soup.find("div", {"id":"random_word"})
-        if "-" in word or " " in word:
-            pass
-        else:
-            loop= False
-            return (word.string)
+    word = " "
 
+    while word == " ":
+        difficulty = str(input("enter the difficulty of the word you would like to guess (easy, medium, hard)")).lower()
 
-        
+        if difficulty == "easy":
+            word = RandomWords().get_random_word(minLength = 2, maxLength = 5)
+        elif difficulty == "medium":
+            word = RandomWords().get_random_word(minLength = 6, maxLength = 8)
+        elif difficulty == "hard":
+            word = RandomWords().get_random_word(minLength = 9, maxLength = 12)
+    
+    return word 
